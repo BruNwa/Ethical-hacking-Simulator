@@ -1,0 +1,15 @@
+Flask>=2.2,<2.4
+flask-cors==5.0.0
+pymysql==1.0.3
+Flask-Migrate==4.0.4
+Flask-RESTful==0.3.9
+python-dotenv==0.21.1
+SQLAlchemy>=2.0,<3.0
+requests
+user_agents
+docker
+mysql-connector-python
+pyjwt
+subprocess32
+secure-smtplib
+threading2==0.3.1; python_version < '3.0'
