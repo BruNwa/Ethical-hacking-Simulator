@@ -71,7 +71,7 @@ class TargetEnvironment:
                     'container': container,
                     'created_at': time.time(),
                     'scenario': scenario_type,
-                    'ip_address': container.attrs['NetworkSettings']['Networks']['beta_app_isolated_network']['IPAddress'],
+                    'ip_address': container.attrs['NetworkSettings']['Networks']['ethical-hacking-simulator_isolated_network']['IPAddress'],
                     'reference_count': 1
                 }
 
@@ -104,7 +104,7 @@ class TargetEnvironment:
                     'db_container': mysql_container,
                     'created_at': time.time(),
                     'scenario': scenario_type,
-                    'ip_address': pentest_container.attrs['NetworkSettings']['Networks']['beta_app_isolated_network']['IPAddress'],
+                    'ip_address': pentest_container.attrs['NetworkSettings']['Networks']['ethical-hacking-simulator_isolated_network']['IPAddress'],
                     'db_ip': mysql_ip,
                     'reference_count': 1
                 }
@@ -130,7 +130,7 @@ class TargetEnvironment:
             container_config = {
                 'image': 'mysql:8.0',
                 'detach': True,
-                'network': 'beta_app_isolated_network',
+                'network': 'ethical-hacking-simulator_isolated_network',
                 'mem_limit': '512m',
                 'cpu_period': 100000,
                 'cpu_quota': 50000,
@@ -202,7 +202,7 @@ class TargetEnvironment:
             container = self.docker_client.containers.run(
                 'pentesting-tools:latest',  
                 detach=True,
-                network='beta_app_isolated_network',
+                network='ethical-hacking-simulator_isolated_network',
                 mem_limit='512m',
                 ports={f"3000/tcp": port},
                 cpu_period=100000,
@@ -228,7 +228,7 @@ class TargetEnvironment:
             container = self.docker_client.containers.run(
                 'phishing-tools:latest',
                 detach=True,
-                network='beta_app_isolated_network',
+                network='ethical-hacking-simulator_isolated_network',
                 mem_limit='512m',
                 ports={f"3000/tcp": port},  # Map container's 3000 to host's cycling port
                 cpu_period=100000,
@@ -254,7 +254,7 @@ class TargetEnvironment:
                 if container.status != 'running':
                     raise Exception(f"Container is not running. Status: {container.status}")
 
-                ip_address = container.attrs['NetworkSettings']['Networks']['beta_app_isolated_network']['IPAddress']
+                ip_address = container.attrs['NetworkSettings']['Networks']['ethical-hacking-simulator_isolated_network']['IPAddress']
 
                 result = container.exec_run(
                     'mysqladmin ping -h localhost',
@@ -283,13 +283,13 @@ class TargetEnvironment:
             'container': main_container,
             'created_at': time.time(),
             'scenario': scenario_type,
-            'ip_address': main_container.attrs['NetworkSettings']['Networks']['beta_app_isolated_network']['IPAddress'],
+            'ip_address': main_container.attrs['NetworkSettings']['Networks']['ethical-hacking-simulator_isolated_network']['IPAddress'],
             'reference_count': 1
         }
 
         if db_container:
             container_info['db_container'] = db_container
-            container_info['db_ip'] = db_container.attrs['NetworkSettings']['Networks']['beta_app_isolated_network']['IPAddress']
+            container_info['db_ip'] = db_container.attrs['NetworkSettings']['Networks']['ethical-hacking-simulator_isolated_network']['IPAddress']
 
         self.containers[container_id] = container_info
         return container_id
