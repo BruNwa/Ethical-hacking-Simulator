@@ -43,7 +43,8 @@ services:
     volumes:
       - ./frontend/web:/usr/share/nginx/html
     networks:
-      - isolated_network
+      isolated_network:
+        ipv4_address: 172.22.0.4
     user: root
     command: sh -c "chmod -R 755 /usr/share/nginx/html && nginx -g 'daemon off;'"
     deploy:
