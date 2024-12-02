@@ -6,7 +6,8 @@ services:
         dockerfile: Dockerfile
     container_name: app_backend
     networks:
-      - isolated_network
+      isolated_network:
+        ipv4_address: 172.22.0.2
     ports:
       - "2222:2222"
       - "5000:5000"
@@ -25,7 +26,8 @@ services:
     image: redis:alpine
     container_name: redis
     networks:
-      - isolated_network
+      isolated_network:
+        ipv4_address: 172.22.0.3
     ports:
       - "6379:6379"
     volumes:

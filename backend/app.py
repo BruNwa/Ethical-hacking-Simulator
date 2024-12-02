@@ -29,7 +29,7 @@ app.config.update(
 def get_redis_connection():
     try:
         return redis.Redis(
-            host='172.22.0.3',  # Consider making this configurable depending on your redis ip address
+            host='172.22.0.3', 
             port=6379,
             db=0,
             socket_timeout=5,
