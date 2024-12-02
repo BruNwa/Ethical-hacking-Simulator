@@ -33,8 +33,33 @@ services:
     volumes:
       - redis_data:/data
 
+
+
+  frontend:
+    image: nginx:alpine
+    container_name: frontend_service
+    ports:
+      - "80:80" 
+    volumes:
+      - ./frontend/web:/usr/share/nginx/html
+    networks:
+      - isolated_network
+    user: root
+    command: sh -c "chmod -R 755 /usr/share/nginx/html && nginx -g 'daemon off;'"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"         
+          memory: "2G"        
+        reservations:
+          cpus: "0.25"        
+          memory: "1G"
+
 networks:
   isolated_network:
     driver: bridge
+
+
+
 volumes:
   redis_data:
