@@ -11,6 +11,8 @@ The Ethical Hacking Simulator is a comprehensive hands-on learning platform desi
 ## 🌐 [Live Demo](https://ethical-hacking-simulator.vercel.app/)
 Try out the application without backend hosting. Note that scenario execution requires full backend setup.
 
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmx0OW9kOHh2cjR0NG04Zmh1dTU2YnU3NzkxcXhsMno3bHR1anhsaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C7Ezn29sDWkwIoMZbm/giphy.gif" width="384" height="480" alt="Alt text">
+
 ## ✨ Features
 
 - 🎯 Real-time terminal emulation
